@@ -106,9 +106,10 @@ cd ~/tools/pwn/pwndbg
 
 cp ./gdbinit ~/.gdbinit
 
-# one_gadget
-echo "Setting up one_gadget..."
+# gems: one_gadget, seccomp-tools
+echo "Setting up Gems..."
 gem install one_gadget
+gem install seccomp-tools
 
 # ROPGadget
 echo "Setting up ROPGadget..."
