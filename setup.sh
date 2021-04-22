@@ -35,14 +35,18 @@ rm -rf /bin/python
 ln -s /bin/python3 /bin/python
 python --version
 
-pip3 install -y pwn angr PyCrypto z3-solver gmpy2
+pip3 install -y pwn pwntools angr PyCrypto z3-solver gmpy2
 
 # pwninit
 echo "Setting up pwninit..."
 wget -O "/bin/pwninit" "https://github.com/io12/pwninit/releases/download/2.2.0/pwninit"
 chmod +x /bin/pwninit
 
-echo 'alias "pwninit"="pwninit --template-path=~/tools/ctf/scripts/pwn/pwninit/base.py"' >> ~/.zshrc
+if [ -e ~/.zshrc ]; then
+    echo 'alias "pwninit"="pwninit --template-path=~/tools/ctf/scripts/pwn/pwninit/base.py"' >> ~/.zshrc
+else
+    echo 'alias "pwninit"="pwninit --template-path=~/tools/ctf/scripts/pwn/pwninit/base.py"' >> ~/.bashrc
+if
 
 # sublime
 echo "Setting up Sublime..."
@@ -83,13 +87,15 @@ git clone git://github.com/wting/autojump.git /usr/share/zsh-autojump
 cd /usr/share/zsh-autojump
 ./install.py
 
-cat << EOF >> ~/.zshrc
+if [ -e ~/.zshrc ]; then
+    cat << EOF >> ~/.zshrc
 
 if [[ -s /root/.autojump/etc/profile.d/autojump.sh ]]; then
     source /root/.autojump/etc/profile.d/autojump.sh
 fi
 
 EOF
+fi
 
 # pwn environment
 dpkg --add-architecture i386
