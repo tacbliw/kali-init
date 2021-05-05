@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/bash
 
 SAVED_PWD=`pwd`
 mkdir -p ~/tools
@@ -17,7 +17,7 @@ git config --global user.name wildcat
 git config --global user.email letranhaitung@gmail.com
 git config --global credential.helper store
 
-git clone https://github.com/tacbliw/ctf ~/tools/ctf
+git clone --quiet https://github.com/tacbliw/ctf ~/tools/ctf
 
 # Vim
 echo "Setting up Vim..."
@@ -27,7 +27,7 @@ cp ./vimrc /usr/share/vim/vimrc
 
 # apt stuff, run upgrade first
 #apt install -y --reinstall open-vm-tools-desktop
-apt install -y python3-pip checksec gdb libmpc-dev strace elfutils
+apt install -y python3-pip checksec gdb libmpc-dev strace elfutils 1>/dev/null
 
 # Python
 echo "Setting up Python..."
@@ -35,7 +35,7 @@ rm -rf /bin/python
 ln -s /bin/python3 /bin/python
 python --version
 
-pip3 install -y pwn pwntools angr PyCrypto z3-solver gmpy2
+pip3 install pwn pwntools angr PyCrypto z3-solver gmpy2 1>/dev/null
 
 # pwninit
 echo "Setting up pwninit..."
@@ -46,7 +46,7 @@ if [ -e ~/.zshrc ]; then
     echo 'alias "pwninit"="pwninit --template-path=~/tools/ctf/scripts/pwn/pwninit/base.py"' >> ~/.zshrc
 else
     echo 'alias "pwninit"="pwninit --template-path=~/tools/ctf/scripts/pwn/pwninit/base.py"' >> ~/.bashrc
-if
+fi
 
 # sublime
 echo "Setting up Sublime..."
@@ -104,8 +104,8 @@ apt-get update
 # pwndbg
 echo "Setting up pwndbg..."
 
-git clone https://github.com/pwndbg/pwndbg ~/tools/pwn/pwndbg
-git clone https://github.com/scwuaptx/Pwngdb ~/tools/pwn/Pwngdb
+git clone --quiet https://github.com/pwndbg/pwndbg ~/tools/pwn/pwndbg --quiet
+git clone --quiet https://github.com/scwuaptx/Pwngdb ~/tools/pwn/Pwngdb
 
 cd ~/tools/pwn/pwndbg
 ./setup.sh
@@ -119,7 +119,7 @@ gem install seccomp-tools
 
 # ROPGadget
 echo "Setting up ROPGadget..."
-git clone https://github.com/JonathanSalwan/ROPgadget ~/tools/pwn/ROPGadget
+git clone --quiet https://github.com/JonathanSalwan/ROPgadget ~/tools/pwn/ROPGadget
 
 # ghidra
 echo "Setting up Ghidra..."
@@ -131,11 +131,11 @@ unzip ./ghidra_9.2.2_PUBLIC_20201229.zip
 # crypto stuff
 echo "Setting up Crypto stuff..."
 
-git clone https://github.com/cr-marcstevens/hashclash ~/tools/crypto/hashclash
+git clone --quiet https://github.com/cr-marcstevens/hashclash ~/tools/crypto/hashclash
 
-git clone https://github.com/Ganapati/RsaCtfTool ~/tools/crypto/RsaCtfTool
+git clone --quiet https://github.com/Ganapati/RsaCtfTool ~/tools/crypto/RsaCtfTool
 
-git clone https://github.com/p4-team/crypto-commons ~/tools/crypto/crypto-commons
+git clone --quiet https://github.com/p4-team/crypto-commons ~/tools/crypto/crypto-commons
 cd ~/tools/crypto/crypto-commons
 python ./setup.py install
 
