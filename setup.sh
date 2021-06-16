@@ -27,7 +27,7 @@ cp ./vimrc /usr/share/vim/vimrc
 
 # apt stuff, run upgrade first
 #apt install -y --reinstall open-vm-tools-desktop
-apt install -y python3-pip checksec gdb libmpc-dev strace elfutils 1>/dev/null
+apt install -y python3-pip checksec gdb libmpc-dev strace elfutils gdbserver 1>/dev/null
 
 # Python
 echo "Setting up Python..."
