@@ -39,7 +39,7 @@ pip3 install pwn pwntools angr pycryptodome z3-solver gmpy2 || exit 1
 
 # pwninit
 echo "Setting up pwninit..."
-wget -O "/bin/pwninit" "https://github.com/io12/pwninit/releases/download/3.0.2/pwninit"
+wget -O "/bin/pwninit" "https://github.com/io12/pwninit/releases/download/3.2.0/pwninit"
 chmod +x /bin/pwninit
 
 if [ -e ~/.zshrc ]; then
@@ -81,7 +81,7 @@ apt-get update
 # pwndbg
 echo "Setting up pwndbg..."
 
-git clone --quiet https://github.com/pwndbg/pwndbg ~/tools/pwn/pwndbg --quiet
+git clone --quiet https://github.com/pwndbg/pwndbg ~/tools/pwn/pwndbg
 git clone --quiet https://github.com/scwuaptx/Pwngdb ~/tools/pwn/Pwngdb
 
 cd ~/tools/pwn/pwndbg
